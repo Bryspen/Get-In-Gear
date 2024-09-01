@@ -31,7 +31,7 @@ class Cli {
   // method to choose a vehicle from existing vehicles
   chooseVehicle(): void {
     inquirer
-    .prompt([
+      .prompt([
         {
           type: 'list',
           name: 'selectedVehicleVin',
@@ -74,6 +74,7 @@ class Cli {
           this.createTruck();
         } else {
           this.createMotorbike();
+        }
       });
   }
 
@@ -307,6 +308,7 @@ class Cli {
         } else {
           truck.tow(answers.vehicleToTow);
           this.performActions();
+        }
       });
   }
 
@@ -397,10 +399,14 @@ class Cli {
         // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
         else if (answers.action === 'Tow') {
           for (let i = 0; i < this.vehicles.length; i++) {
+            if (!(this.vehicles[i]  instanceof Truck)) {
+              console.log('This vehicle cannot tow');
+            }
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               if (this.vehicles[i] instanceof Truck) {
                 this.findVehicleToTow(this.vehicles[i]);
                 return;
+                
               }
             }
           }
@@ -409,8 +415,11 @@ class Cli {
         else if (answers.action === 'Wheelie') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
+              if (!(this.vehicles[i] instanceof Motorbike)) {
+                console.log('This vehicle cannot do a wheelie');
+              }
               if (this.vehicles[i] instanceof Motorbike) {
-                this.vehicles[i].wheelie();
+                (this.vehicles[i] as Motorbike).wheelie(this.vehicles[i] as Motorbike);
               }
             }
           }

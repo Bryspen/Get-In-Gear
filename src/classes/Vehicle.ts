@@ -31,6 +31,8 @@ class Vehicle implements Driveable {
     if (this.started) {
       this.currentSpeed += change;
       console.log(`Vehicle accelerated to ${this.currentSpeed} mph`);
+    } if (this.currentSpeed > 88) {
+      console.log(`You have entered the year 1955. The current speed is over 88 mph`);
     } else {
       console.log('Start the vehicle first');
     }
