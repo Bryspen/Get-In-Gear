@@ -11,7 +11,7 @@ Get In Gear is a command line interface application that allows users to perform
 Users will need to have Node.js installed, as well as the dependencies inquirer and typescript.
 ## Usage
 Get In Gear is accessible from the Command Line.
-[Video Link]
+[Usage Video]("https://drive.google.com/file/d/1xVJ-F2AHwsjpSxywanF_-R7gHJPN4IaS/preview")
 ## Credits
 GitHub - [Bryspen](github.com/Bryspen)
 ## License
