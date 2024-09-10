@@ -230,6 +230,10 @@ class Cli {
           name: 'topSpeed',
           message: 'Enter Top Speed',
         },
+        {  type: 'input',
+          name: 'gears',
+          message: 'Enter Number of Gears',
+        },
         {
           type: 'input',
           name: 'frontWheelDiameter',
@@ -261,6 +265,7 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
+          parseInt(answers.gears),
           [
             new Wheel(
               parseInt(answers.frontWheelDiameter),
@@ -401,6 +406,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (!(this.vehicles[i]  instanceof Truck)) {
               console.log('This vehicle cannot tow');
+              return this.performActions(); 
             }
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               if (this.vehicles[i] instanceof Truck) {
